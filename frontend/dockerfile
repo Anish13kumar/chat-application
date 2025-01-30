@@ -1,8 +1,20 @@
-# Use the official Apache HTTP Server image
-FROM httpd:latest
+# Use the official Ubuntu image as the base
+FROM ubuntu
 
-# Copy all files from the current directory (your front-end code) to the Apache document root
-COPY ./ /usr/local/apache2/htdocs/
+# Update package lists and install Apache
+RUN apt update && apt install apache2 -y
 
-# Expose port 80 (default for Apache)
+# Copy all frontend files to the Apache document root
+COPY ./ /var/www/html/
+
+COPY --chown=root:root swarm.conf /etc/apache2/sites-available/swarm.conf
+
+COPY init.sh /init.sh
+
+RUN chmod +x /init.sh
+
+# Expose port 80 for HTTP traffic
 EXPOSE 80
+
+# Start Apache in the foreground
+CMD ["./init.sh"]

@@ -1,0 +1,7 @@
+[ ] Reverse proxy to WS
+[ ] FRONTEND & BACKEND make as container
+[ ] Upload container to github
+[ ] Create a swarm Network
+[ ] Create a swarm configuartion
+[ ] Check depolyment
+[ ] End process

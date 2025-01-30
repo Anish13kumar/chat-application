@@ -9,10 +9,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // MongoDB setup via environment variables or fallback to default
-const mongoURL = process.env.MONGO_URL || 'mongodb://root:example@localhost:27017/chatApp?authSource=admin';
+const mongoURL = process.env.MONGO_URL || 'mongodb://root:example@mongo:27017/chatApp?authSource=admin';
 mongoose.connect(mongoURL)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 
 
 const chatSchema = new mongoose.Schema({
