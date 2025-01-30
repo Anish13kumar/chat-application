@@ -14,7 +14,9 @@ services:
   #   volumes:
   #     - "/var/run/docker.sock:/var/run/docker.sock"
   frontend: 
-    image: ghcr.io/anish13kumar/chat-application-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: frontend
     ports:
       - 80:80
@@ -26,7 +28,9 @@ services:
     depends_on:
       - backend
   backend:
-    image: ghcr.io/anish13kumar/chat-application-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: backend
     depends_on:
       - mongo
